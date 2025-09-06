@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Felix Kiplangat – Feizbon Hub</title>
+  <meta name="description" content="Portfolio of Felix Kiplangat (Feizbon) – IT Graduate, Aviation Enthusiast, Tech Creator." />
+  <style>
+    :root{
+      --bg: #0b2a44;           /* deep blue for hero gradient */
+      --bg2: #1d67a8;          /* lighter blue */
+      --card: #ffffff;
+      --text: #0f172a;         /* slate-900 */
+      --muted: #475569;        /* slate-600 */
+      --accent: #2563eb;       /* blue-600 */
+      --accent-2: #0ea5e9;     /* sky-500 */
+      --ring: rgba(37,99,235,.25);
+      --shadow: 0 10px 30px rgba(2,6,23,.10);
+      --radius: 20px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --card:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --shadow:0 10px 30px rgba(0,0,0,.45);} 
+      body{ background:#020617; }
+    }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; color:var(--text);
+      background:#f8fafc;
+    }
+    /* Header */
+    .container{ width:min(1100px, 92%); margin-inline:auto; }
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background: color-mix(in oklab, #ffffff 75%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, #94a3b8 20%, transparent);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px; }
+    .brand .dot{ width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:0 4px 10px var(--ring); }
+    nav a{ color:var(--muted); text-decoration:none; margin-left:22px; font-weight:600; }
+    nav a:hover{ color:var(--text); }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(160deg, var(--bg), var(--bg2));
+      color:#fff; padding:84px 0 92px; position:relative; overflow:hidden;
+    }
+    .hero .airplane{ position:absolute; right:-60px; top:40px; opacity:.12; transform:rotate(12deg); }
+    .hero h1{ margin:18px 0 8px; font-size: clamp(32px, 6vw, 54px); line-height:1.1; }
+    .hero p{ color: #e2e8f0; font-size: clamp(16px, 2.2vw, 20px); }
+    .cta{ margin-top:22px; display:flex; gap:14px; flex-wrap:wrap; }
+    .btn{ appearance:none; border:0; padding:12px 18px; border-radius:999px; font-weight:700; cursor:pointer; box-shadow: var(--shadow); }
+    .btn.primary{ background:#111827; color:#fff; }
+    .btn.secondary{ background:#ffffff; color:#0f172a; }
+    .btn:focus{ outline:3px solid var(--ring); outline-offset:2px; }
+
+    /* Card sections */
+    section{ padding:60px 0; }
+    .card{ background:var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding:28px; }
+
+    /* About */
+    .about{ display:grid; grid-template-columns: 160px 1fr; gap:24px; align-items:center; }
+    .avatar{ width:160px; height:160px; border-radius:50%; object-fit:cover; border:6px solid #ffffff20; box-shadow: 0 10px 20px rgba(2,6,23,.15); }
+    .about h2{ margin:0; font-size: 28px; }
+    .pill{ display:inline-block; background: color-mix(in oklab, var(--accent) 12%, #0000); border:1px solid color-mix(in oklab, var(--accent) 35%, #0000); color:var(--muted); padding:4px 10px; border-radius:999px; font-size:13px; margin-right:8px; }
+
+    /* Skills */
+    .skills{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:10px; }
+    .skill{ background: color-mix(in oklab, var(--accent) 5%, var(--card)); border:1px solid color-mix(in oklab, var(--accent) 18%, #0000); border-radius:16px; padding:16px; }
+    .skill h3{ margin:0 0 6px; font-size:18px; }
+
+    /* Projects */
+    .projects{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px; }
+    .proj{ border:1px solid #00000010; border-radius:16px; overflow:hidden; background:var(--card); display:flex; flex-direction:column; }
+    .proj .thumb{ aspect-ratio: 16/9; background:linear-gradient(135deg, #e2e8f0, #f8fafc); display:grid; place-items:center; font-weight:700; color:#334155; }
+    .proj .body{ padding:14px 16px 18px; }
+    .proj h3{ margin:0 0 6px; font-size:18px; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; }
+    .tag{ font-size:12px; padding:4px 8px; border-radius:999px; background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+
+    /* Timeline */
+    .timeline{ position:relative; padding-left:22px; }
+    .timeline:before{ content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#cbd5e1; }
+    .t-item{ position:relative; margin-bottom:16px; }
+    .t-item:before{ content:""; position:absolute; left:-1px; top:6px; width:14px; height:14px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); border-radius:999px; box-shadow:0 2px 6px var(--ring); }
+    .t-item h4{ margin:0 0 4px; }
+    .t-item p{ margin:0; color:var(--muted); }
+
+    /* Contact */
+    form{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    form .full{ grid-column:1/-1; }
+    input, textarea{ width:100%; padding:12px 14px; border-radius:12px; border:1px solid #cbd5e1; background:var(--card); color:var(--text); }
+    textarea{ min-height:120px; resize:vertical; }
+    .submit{ margin-top:6px; }
+
+    /* Footer & helpers */
+    footer{ padding:40px 0 50px; color:var(--muted); text-align:center; }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* Responsive tweaks */
+    @media (max-width:700px){
+      .about{ grid-template-columns: 1fr; text-align:center; }
+      .about .meta{ justify-self:center; }
+      nav{ display:none; }
+      .mobile-nav{ display:flex; gap:14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Feizbon Hub</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="mobile-nav">
+        <a class="btn" href="#projects" aria-label="Skip to Projects">Projects</a>
+        <a class="btn secondary" href="#contact" aria-label="Skip to Contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <svg class="airplane" width="260" height="260" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9L2 14v2l8-2.5V19l-2 1v1l3-.5 3 .5v-1l-2-1v-5.5l9 2.5Z"/>
+    </svg>
+    <div class="container">
+      <span class="pill">IT Graduate • Aviation Enthusiast • Tech Creator</span>
+      <h1>Hi, I’m <span style="white-space:nowrap">Felix Kiplangat</span></h1>
+      <p>I design and build practical tech solutions—from web apps to data tools—and I’m passionate about how technology powers aviation operations.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View My Projects</a>
+        <!-- TODO: Replace the href with your real CV file path -->
+        <a class="btn secondary" href="assets/Felix_Kiplangat_CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- About -->
+    <section id="about">
+      <div class="card about">
+        <!-- TODO: Replace src with your actual image file name (place image in same folder) -->
+        <img class="avatar" src="assets/felix-profile.jpg" alt="Portrait of Felix Kiplangat" />
+        <div class="meta">
+          <h2>About Me</h2>
+          <p>I’m an IT graduate with a problem‑solving mindset. I love blending clean code with clear user experience, and I’m especially curious about airport operations and safety (ICAO/IATA basics).</p>
+          <p><strong>Graduated:</strong> BSc. IT, Kenya Highlands University (2024)</p>
+          <p><em>Where technology meets precision.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="card">
+        <h2 style="margin-top:0">Skills</h2>
+        <div class="skills">
+          <div class="skill">
+            <h3>Programming & Web</h3>
+            <p>HTML, CSS, JavaScript, Python, basic React; REST APIs, responsive UI.</p>
+          </div>
+          <div class="skill">
+            <h3>Data & Automation</h3>
+            <p>Excel, SQL basics, data cleaning, simple dashboards & scripts.</p>
+          </div>
+          <div class="skill">
+            <h3>Aviation Knowledge</h3>
+            <p>Safety awareness, apron operations concepts, ICAO/IATA basics.</p>
+          </div>
+          <div class="skill">
+            <h3>Creative Builds</h3>
+            <p>Casino game prototype, survey/HR data tools, UX polish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="card">
+        <h2 style="margin-top:0">Featured Projects</h2>
+        <div class="projects">
+          <article class="proj">
+            <div class="thumb">Casino Prototype</div>
+            <div class="body">
+              <h3>Interactive Casino Game (Web)</h3>
+              <p>A sleek prototype game demonstrating UI/UX, state logic, and animations.</p>
+              <div class="tags"><span class="tag">JS</span><span class="tag">UI/UX</span><span class="tag">Game</span></div>
+            </div>
+          </article>
+          <article class="proj">
+            <div class="thumb">Excel Tool</div>
+            <div class="body">
+              <h3>Excel/Data Automation</h3>
+              <p>Auto-sorts, cleans, and visualizes datasets for HR/surveys/logistics.</p>
+              <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Charts</span></div>
+            </div>
+          </article>
+          <article class="proj">
+            <div class="thumb">Airport Ops</div>
+            <div class="body">
+              <h3>Mini Airport Ops Simulator</h3>
+              <p>Concept app modeling stands, taxi-in/out, and apron allocation.</p>
+              <div class="tags"><span class="tag">Sim</span><span class="tag">Logic</span><span class="tag">Aviation</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume / Timeline -->
+    <section id="resume">
+      <div class="card">
+        <h2 style="margin-top:0">Resume</h2>
+        <div class="timeline" aria-label="Experience timeline">
+          <div class="t-item">
+            <h4>Enumerator – Ministry of Labour and Social Protection</h4>
+            <p>Oct–Nov 2024 • Data collection & quality checks.</p>
+          </div>
+          <div class="t-item">
+            <h4>Clerk – Independent Electoral and Boundaries Commission (IEBC)</h4>
+            <p>Aug 2022 • Polling logistics & records handling.</p>
+          </div>
+          <div class="t-item">
+            <h4>BSc. Information Technology – Kenya Highlands University</h4>
+            <p>2020–2024 • Graduated 2024.</p>
+          </div>
+        </div>
+        <p style="margin-top:18px"><a class="btn secondary" href="assets/Felix_Kiplangat_CV.pdf" download>Download Full CV</a></p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="card">
+        <h2 style="margin-top:0">Contact</h2>
+        <form onsubmit="event.preventDefault(); alert('Thanks, Felix will reach back soon!');">
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name" required />
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" type="email" placeholder="Your email" required />
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" class="full" placeholder="Write your message..." required></textarea>
+          <button class="btn primary submit" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Felix Kiplangat (Feizbon). All rights reserved.
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
